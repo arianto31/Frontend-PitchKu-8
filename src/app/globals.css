@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+/*
+  Design tokens — PitchKu
+  Palet dan skala ini bukan default Tailwind: warna dan tipe dipilih
+  khusus untuk kesan "studio produksi dokumen bisnis", bukan template
+  SaaS generik. Lihat catatan di setiap grup untuk alasan pemilihan.
+*/
+@theme {
+  /* Kertas & tinta — bukan krem, bukan hitam pekat */
+  --color-paper: #fafaf7;
+  --color-paper-dim: #f1f0ea;
+  --color-ink: #151920;
+  --color-ink-soft: #4a5060;
+  --color-ink-faint: #8b8f99;
+  --color-line: #e4e2d9;
+
+  /* Aksen utama — "tinta pers", dipakai disiplin untuk aksi & fokus */
+  --color-press: #26466e;
+  --color-press-deep: #172e4a;
+  --color-press-soft: #e8eef5;
+
+  /* Aksen sekunder — "highlighter emas", dipakai sangat jarang */
+  --color-gold: #dda43a;
+  --color-gold-deep: #a97620;
+
+  /* Blok warna berani — dipakai satu kali per halaman */
+  --color-forest: #20402f;
+  --color-forest-soft: #e5ece6;
+
+  /* Status */
+  --color-error: #b3261e;
+  --color-success: #1f6f43;
+
+  --font-display: var(--font-schibsted), "Schibsted Grotesk", sans-serif;
+  --font-sans: var(--font-public-sans), "Public Sans", sans-serif;
+  --font-mono: var(--font-plex-mono), "IBM Plex Mono", monospace;
+
+  /*
+    Radius sengaja tidak seragam: elemen struktural (kartu, panel, sheet)
+    tetap tegas/kotak, radius cuma dipakai untuk elemen interaktif kecil.
+    Ini yang membedakan dari "SaaS card kit" — satu radius untuk semuanya.
+  */
+  --radius-sheet: 2px;
+  --radius-control: 8px;
+  --radius-pill: 999px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: light only;
+  }
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-press);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
